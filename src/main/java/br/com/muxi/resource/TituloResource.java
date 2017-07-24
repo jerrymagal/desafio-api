@@ -27,6 +27,11 @@ public class TituloResource {
 	
 	private TituloConverter converter = new TituloConverter();
 	
+	@GetMapping(path="/")
+	public String index() {
+		return "index";
+	}
+	
 	@GetMapping
 	public List<Titulo> getAll() {
 		return service.getAll();
