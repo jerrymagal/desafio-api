@@ -80,7 +80,7 @@ public class TituloResourceTest {
 	public void save() throws Exception {
 		mock.perform(post("/titulo").content("46451231;447;PWWIN;8;F04A2E4088B;3;8.00b3;0;44796544;PWWIN")
 				.contentType(MediaType.TEXT_PLAIN))
-		.andExpect(status().isOk())
+		.andExpect(status().isCreated())
 		.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
 		.andExpect(jsonPath("logic", is(46451231)))
 		.andExpect(jsonPath("serial", is("447")))

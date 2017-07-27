@@ -3,6 +3,8 @@ package br.com.muxi.resource;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,8 +35,16 @@ public class TituloResource {
 	}
 	
 	@GetMapping
-	public List<Titulo> getAll() {
-		return service.getAll();
+	public ResponseEntity<List<Titulo>> getAll() {
+		
+		List<Titulo> titulos = service.getAll();
+		HttpStatus status = HttpStatus.OK;
+		
+		if(titulos.isEmpty()) {
+			status = HttpStatus.NO_CONTENT;
+		}
+		
+		return new ResponseEntity<>(titulos, status);
 	}
 	
 	@GetMapping("/{logic}")
@@ -43,10 +53,10 @@ public class TituloResource {
 	}
 	
 	@PostMapping(consumes=MEDIA_TYPE_TEXT_PLAIN)
-	public Titulo save(@RequestBody String textoTitulo) {
+	public ResponseEntity<Titulo> save(@RequestBody String textoTitulo) {
 		Titulo titulo = converter.toObject(textoTitulo);
 		service.save(titulo);
-		return titulo;
+		return new ResponseEntity<>(titulo, HttpStatus.CREATED);
 	}
 	
 	@PutMapping(path="/{logic}", consumes=MEDIA_TYPE_JSON)
