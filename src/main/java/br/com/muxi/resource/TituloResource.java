@@ -21,7 +21,7 @@ import br.com.muxi.service.TituloService;
 @RequestMapping("/titulo")
 public class TituloResource {
 
-	private static final String MEDIA_TYPE_TEXT_PLAIN = "text/plain";
+	private static final String MEDIA_TYPE_TEXT_HTML = "text/html";
 	private static final String MEDIA_TYPE_JSON = "application/json";
 	
 	@Autowired
@@ -52,7 +52,7 @@ public class TituloResource {
 		return service.get(logic);
 	}
 	
-	@PostMapping(consumes=MEDIA_TYPE_TEXT_PLAIN)
+	@PostMapping(consumes=MEDIA_TYPE_TEXT_HTML)
 	public ResponseEntity<Titulo> save(@RequestBody String textoTitulo) {
 		Titulo titulo = converter.toObject(textoTitulo);
 		service.save(titulo);

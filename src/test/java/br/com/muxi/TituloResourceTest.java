@@ -79,7 +79,7 @@ public class TituloResourceTest {
 	@Test
 	public void save() throws Exception {
 		mock.perform(post("/titulo").content("46451231;447;PWWIN;8;F04A2E4088B;3;8.00b3;0;44796544;PWWIN")
-				.contentType(MediaType.TEXT_PLAIN))
+				.contentType(MediaType.TEXT_HTML))
 		.andExpect(status().isCreated())
 		.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
 		.andExpect(jsonPath("logic", is(46451231)))
@@ -137,7 +137,7 @@ public class TituloResourceTest {
 	@Test
 	public void serialRequired() throws Exception {
 		mock.perform(post("/titulo").content("46421131;;PWWIN;8;F04A2E4088B;3;8.00b3;0;44796544;PWWIN")
-				.contentType(MediaType.TEXT_PLAIN))
+				.contentType(MediaType.TEXT_HTML))
 		.andExpect(status().isBadRequest())
 		.andExpect(jsonPath("statusCode", is(400)))
 		.andExpect(jsonPath("erros[0]", is("Serial não pode ser vazio.")));
@@ -146,7 +146,7 @@ public class TituloResourceTest {
 	@Test
 	public void modelRequired() throws Exception {
 		mock.perform(post("/titulo").content("46421131;225;;8;F04A2E4088B;3;8.00b3;0;44796544;PWWIN")
-				.contentType(MediaType.TEXT_PLAIN))
+				.contentType(MediaType.TEXT_HTML))
 		.andExpect(status().isBadRequest())
 		.andExpect(jsonPath("statusCode", is(400)))
 		.andExpect(jsonPath("erros[0]", is("Model não pode ser vazio.")));
@@ -155,7 +155,7 @@ public class TituloResourceTest {
 	@Test
 	public void versionRequired() throws Exception {
 		mock.perform(post("/titulo").content("46421131;225;PWWIN;8;F04A2E4088B;3;;0;44796544;PWWIN")
-				.contentType(MediaType.TEXT_PLAIN))
+				.contentType(MediaType.TEXT_HTML))
 		.andExpect(status().isBadRequest())
 		.andExpect(jsonPath("statusCode", is(400)))
 		.andExpect(jsonPath("erros[0]", is("Version não pode ser vazio.")));
@@ -164,7 +164,7 @@ public class TituloResourceTest {
 	@Test
 	public void samMinValue() throws Exception {
 		mock.perform(post("/titulo").content("46421131;225;PWWIN;-8;F04A2E4088B;3;8.00b3;0;44796544;PWWIN")
-									.contentType(MediaType.TEXT_PLAIN))
+									.contentType(MediaType.TEXT_HTML))
 									.andExpect(status().isBadRequest())
 									.andExpect(jsonPath("statusCode", is(400)))
 									.andExpect(jsonPath("erros[0]", is("Valor do campo sam não pode ser menor que zero.")));
