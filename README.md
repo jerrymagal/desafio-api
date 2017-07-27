@@ -16,7 +16,7 @@ A api foi publicada no Heroku e disponível através da URL: **https://desafio-m
   
   + A única **MediaType** aceita na requisição POST é **text/plain**.
   
-  + Deve retornar o status 200 - OK e o Titulo no formato Json.
+  + Deve retornar o status 201 - CREATED e o Titulo no formato Json.
   
   
   #### 2 - Editando um Titulo:
@@ -37,6 +37,8 @@ A api foi publicada no Heroku e disponível através da URL: **https://desafio-m
   + Ex.: https://desafio-muxi-api.herokuapp.com/titulo
   
   + Deve retornar o status 200 - OK e o um array com todos os Titulos cadastrados, no formato Json.
+  
+  + Caso não contenha Titulos cadastrados, retorna o código 204 - No Content
   
   
     #### 4 - Buscando um Titulo:
