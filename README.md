@@ -14,7 +14,7 @@ A api foi publicada no Heroku e disponível através da URL: **https://desafio-m
   
   + Ex.: https://desafio-muxi-api.herokuapp.com/titulo/11132211;258;PWWIN;1;F04A2E4088B;4;8.00b3;0;16777336;PWWIN
   
-  + A única **MediaType** aceita na requisição POST é **text/plain**.
+  + A única **MediaType** aceita na requisição POST é **text/html**.
   
   + Deve retornar o status 201 - CREATED e o Titulo no formato Json.
   
